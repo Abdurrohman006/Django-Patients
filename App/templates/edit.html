@@ -1,0 +1,65 @@
+{% extends 'add.html' %}
+
+<!-- Title on the Browser tab -->
+{% block title %} Edit Patient {% endblock title %}
+
+
+<!-- Navbar content (icon + title) -->
+{% block nav-content %}
+    <i class="fas fa-user-edit"></i>&nbsp;&nbsp; {{ patient.name }}
+{% endblock nav-content %}
+
+
+<!-- Time -->
+{% block time %}
+    <div class="col-sm">
+    <center>
+        <span id="clock" style="color: #89cff0;"></span>
+    </center>
+    </div>
+{% endblock time %}
+
+
+<!-- Card title (in add.html) extends here -->
+{% block card-title %}
+    Registered at: <span class="text-dark">{{ patient.created_at | date:"m/d/Y (H:m)"  }}</span>
+{% endblock card-title %}
+
+
+<!-- Add button extends here -->
+{% block Btn-add %}
+    <i class="fas fa-hdd"></i>&nbsp;&nbsp;Save
+{% endblock Btn-add %}
+
+
+<!--    Reset Button    -->
+{% block Btn-reset %}
+<button type="reset" class="btn btn-secondary btn-sm txt-sm"><i class="fas fa-sync-alt">&nbsp;&nbsp;Reset</i></button>
+{% endblock Btn-reset %}
+
+
+<!-- Block from Action -->
+{% block Action %} action="/edit_patient/" {% endblock Action %}
+
+
+<!--======================= All <inputs> Extended =======================-->
+<!-- Name -->
+{% block Value-name %} value = '{{ patient.name }}' {% endblock Value-name %}
+<!-- Phone -->
+{% block Value-phone %} value = '{{ patient.phone }}' {% endblock Value-phone %}
+<!-- Email -->
+{% block Value-email %} value = '{{ patient.email }}' {% endblock Value-email %}
+<!-- Age -->
+{% block Value-age %} value = '{{ patient.age }}' {% endblock Value-age %}
+<!-- Gender -->
+{% block option %}
+<option style="background-color: #d3d3d3; color: #007bff">{{ patient.gender }}</option>
+{% endblock option %}
+
+<!-- Note -->
+{% block note %}{{ patient.note }}{% endblock note %}
+
+<!--  Id Hidden  -->
+{% block id-hidden %}
+<input type="hidden" value="{{ patient.id }}" name="id">
+{% endblock id-hidden %}
